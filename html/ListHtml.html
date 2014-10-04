@@ -1,0 +1,71 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>03 리스트(List)</title>
+<meta name="generator" content="Namo WebEditor(Trial)">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p style="line-height:100%; margin-top:0; margin-bottom:0;"><font size="5" face="나눔고딕"><b>03 리스트(List)</b></font></p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;"><b><font face="맑은 고딕">1. 리스트란</font></b><font face="맑은 고딕">?</font></p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">리스트란 보통 구조체(여러 가지 데이터를 한 데 묶어 놓을 수 있는 자료형)를 이용하여 포인터 변수를 설정해 두고, 이 변수를 이용하여 다른 데이터 구조체의 주솟값을 저장함으로써 데이터를 연결하는 방식의 데이터 구조입니다.</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">리스트를 이용하면 다른 데이터 구조도 표현 가능합니다. 그러나 이 프로그램에서는 리스트 본연의 기능에 충실하기 위하여 선형 연결 리스트(Linear Linked List)의 형태로 구현하였습니다.</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;" align="center"><img src="ListImage.jpg" width="573" height="162" border="0" vspace="5" hspace="5" alt="데이터 구조 - 리스트"></p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;"><b>&nbsp;</b></p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;"><b><font face="맑은 고딕">2. 리스트의 원리</font></b></p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;"><span style="mso-fareast-font-family:맑은 고딕;">리스트는 구조체를 이용하여 자기 참조를 반복함으로써 데이터를 저장하는 데이터 구조입니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">. </span><span style="mso-fareast-font-family:맑은 고딕;">즉</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, </span><span style="mso-fareast-font-family:맑은 고딕;">구조체에는 데이터 할당을 위한 변수와 참조를 위한 포인터 변수가 존재합니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">. </span><span style="mso-fareast-font-family:맑은 고딕;">따라서 데이터를 입력할 때에는 원하는 자리에 할 수 있으며</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, </span><span style="mso-fareast-font-family:맑은 고딕;">해당 위치 바로 직전에 존재하는 데이터의 참조 변수를 통해 조작하면 됩니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">. </span><span style="mso-fareast-font-family:맑은 고딕;">이러한 구조체 한 덩어리 한 덩어리를 노드</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">(Node)</span><span style="mso-fareast-font-family:맑은 고딕;">라고 합니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">. </span><span style="mso-fareast-font-family:맑은 고딕;">일반적으로 가장 처음의 위치를 제시하는 노드를 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">'Head', </span><span style="mso-fareast-font-family:맑은 고딕;">가장 마지막의 위치를 알리는 노드를 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">'Tail'</span><span style="mso-fareast-font-family:맑은 고딕;">이라고 하며</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, Head</span><span style="mso-fareast-font-family:맑은 고딕;">는 데이터가 없고 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">Tail</span><span style="mso-fareast-font-family:맑은 고딕;">은 참조 변수가 없는</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">(null) </span><span style="mso-fareast-font-family:맑은 고딕;">형태로 이루어져 있습니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">.</span></p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;" align="center"><img src="List 데이터 추출+입력.jpg" width="800" height="141" border="0" alt="데이터 추출과 입력"></p>
+<p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;"><span style="mso-fareast-font-family:맑은 고딕;">이 프로그램에서는 간단한 연결 리스트</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">(Linked List)</span><span style="mso-fareast-font-family:맑은 고딕;">를 구현하였으며</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, </span><span style="mso-fareast-font-family:맑은 고딕;">데이터의 입력 및 제거를 상세히 구현해 내었습니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">.</span></p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;"><span style="mso-fareast-font-family:맑은 고딕;">리스트에서의 데이터의 입력은 앞서 스택과 큐와는 다른데</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, Head</span><span style="mso-fareast-font-family:맑은 고딕;">와 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">Tail </span><span style="mso-fareast-font-family:맑은 고딕;">사이에 있는 임의의 데이터 간에 새로운 데이터 노드를 추가할 수도 있습니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">. </span><span style="mso-fareast-font-family:맑은 고딕;">위 그림을 예로 들면,&nbsp;</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">E </span><span style="mso-fareast-font-family:맑은 고딕;">노드와 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">G </span><span style="mso-fareast-font-family:맑은 고딕;">노드 사이에 새로운 데이터 노드 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">F</span><span style="mso-fareast-font-family:맑은 고딕;">를 입력하고자 할 때</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, </span><span style="mso-fareast-font-family:맑은 고딕;">새로운 데이터를 생성한 후 그것의 포인터가 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">G </span><span style="mso-fareast-font-family:맑은 고딕;">노드의 주솟값을 할당하게 한 후</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, E </span><span style="mso-fareast-font-family:맑은 고딕;">노드의 포인터가 새로운 데이터 노드의 주솟값을 할당하는 과정을 거치면서 도중 입력을 하게 됩니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">. </span><span style="mso-fareast-font-family:맑은 고딕;">이와는 반대로 도중에 제거를 하고자 할 때</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">, </span><span style="mso-fareast-font-family:맑은 고딕;">위 그림에서&nbsp;</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">B </span><span style="mso-fareast-font-family:맑은 고딕;">노드와 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">D </span><span style="mso-fareast-font-family:맑은 고딕;">노드 사이에 있는 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">C </span><span style="mso-fareast-font-family:맑은 고딕;">노드를 제거하고자 할 때에는 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">B </span><span style="mso-fareast-font-family:맑은 고딕;">노드의 포인터에 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">D</span><span style="mso-fareast-font-family:맑은 고딕;">의 주솟값을 할당하고 그대로 </span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">C </span><span style="mso-fareast-font-family:맑은 고딕;">노드를 제거</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">(free() </span><span style="mso-fareast-font-family:맑은 고딕;">이용</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">)</span><span style="mso-fareast-font-family:맑은 고딕;">하면 됩니다</span><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;">.</span></p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;"><b><font face="맑은 고딕">3. 용어 정리</font></b></p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<table border="1" width="800" cellpadding="5" align="center">
+    <tr>
+        <th width="189" align="center" valign="middle" bgcolor="#3366FF"><font color="white">용어</font></th>
+        <th width="579" align="center" valign="middle" bgcolor="#3366FF"><font color="white">의미</font></th>
+    </tr>
+    <tr>
+        <td width="189">연결 리스트(Linked List)</td>
+        <td width="579">기본적인 리스트</td>
+    </tr>
+    <tr>
+        <td width="189">노드(Node)</td>
+        <td width="579">데이터를 저장하고 참조 변수를 포함하고 있는 집합체</td>
+    </tr>
+    <tr>
+        <td width="189">헤드(Head)</td>
+        <td width="579">리스트의 근간이 되는 노드. 연결 리스트에서는 참조 변수만 가짐</td>
+    </tr>
+    <tr>
+        <td width="189">테일(Tail)</td>
+        <td width="579">리스트의 마지막 부분이 되는 노드. 데이터는 있을 수도, 없을 수도 있으며 참조 변수는 null인 형태로 존재.</td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font face="맑은 고딕"><b>4. 예제</b></font></p>
+<p>처음 1부터 12까지 차례대로 쓰여 있는 리스트를 만든다. 그 후 짝수가 쓰여 있는 노드를 제거한 후 그 자리에 '35'를 입력한 노드를 생성하시오.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:150%; margin-top:0; margin-bottom:0;" align="center"><span lang="EN-US" style="font-family:맑은 고딕;mso-ascii-font-family:맑은 고딕;mso-font-width:100%;letter-spacing:0pt;mso-text-raise:0pt;"><a href="ExplanationHtml.html" target="_self">홈으로</a></span></p>
+</body>
+
+</html>

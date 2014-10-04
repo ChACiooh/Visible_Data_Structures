@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=List()
+comment1.params=
+comment1.target=void\ act()
+comment2.params=num
+comment2.target=void\ NoChange(int)
+comment3.params=num
+comment3.target=void\ ArrowChange(int)
+comment4.params=x\ y\ No\ data2
+comment4.target=void\ addGeneralNode(int,\ int,\ int,\ int)
+comment5.params=num\ x\ y
+comment5.target=void\ addArrow(int,\ int,\ int)
+numComments=6

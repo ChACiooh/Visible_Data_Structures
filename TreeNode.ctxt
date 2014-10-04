@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TreeNode()
+comment1.params=num
+comment1.target=TreeNode(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=background
+comment3.target=void\ printNum(greenfoot.GreenfootImage)
+comment4.params=
+comment4.target=greenfoot.GreenfootImage\ selectOrNot()
+numComments=5

@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TreeNodetest()
+comment1.params=num
+comment1.target=TreeNodetest(int)
+comment2.params=
+comment2.target=void\ delay()
+comment3.params=a\ b
+comment3.target=void\ setNodePositionVector(int,\ int)
+comment4.params=
+comment4.target=void\ act()
+comment5.params=t
+comment5.target=void\ controlTransparency(int)
+comment6.params=background
+comment6.target=void\ printNum(greenfoot.GreenfootImage)
+comment7.params=
+comment7.target=greenfoot.GreenfootImage\ selectOrNot()
+comment8.params=
+comment8.target=TreeNodetest\ getTreeNode()
+numComments=9

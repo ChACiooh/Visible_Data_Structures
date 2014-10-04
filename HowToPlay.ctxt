@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=HowToPlay()
+comment1.params=file_name
+comment1.target=void\ updateImage(java.lang.String)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=a
+comment3.target=void\ checkClicked(boolean)
+numComments=4

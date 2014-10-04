@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=No
+comment0.target=EB(int)
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ mouseOn()
+comment3.params=a
+comment3.target=void\ checkClicked(boolean)
+numComments=4

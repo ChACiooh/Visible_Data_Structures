@@ -1,0 +1,145 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>01 스택(Stack)</title>
+<meta name="generator" content="Namo WebEditor(Trial)">
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red">
+<p><font face="나눔고딕 ExtraBold"><span style="font-size:22pt;">01 스택(Stack)</span></font></p>
+<p>&nbsp;</p>
+<p><b><font face="맑은 고딕">1. 스택이란?</font></b></p>
+<p align="justify">스택이란 후입선출(Last in first out; LIFO), 즉 먼저 들어온 데이터일수록 나중에 추출되는 방법으로 데이터를 저장하고 추출하는 데이터 구조입니다.</p>
+<p style="line-height:150%;">쌓아둔 책을 생각하면 이해하기가 쉬운데, 가장 아래에 있는 책을 꺼내기 위해서는 위에 있는 책을 치워야 하듯이, 아래쪽에 있는 데이터를 추출하기 위해서는 위쪽에 있는 데이터, 즉 최근에 들어온 데이터가 먼저 추출되어야 합니다.</p>
+<p align="center"><img src="StackImage.jpg" width="400" height="376" border="0" vspace="5" hspace="5" alt="데이터 구조 - 스택"></p>
+<p>&nbsp;</p>
+<p><b><font face="맑은 고딕">2. 용어 설명</font></b></p>
+<table border="1" cellpadding="5" cellspacing="2" width="800" height="140" align="center">
+    <tr>
+        <th width="134" bgcolor="#3366FF" bordercolordark="#3366FF">
+            <p align="center"><font face="나눔고딕" color="white">용어</font></p>
+        </th>
+        <th width="634" bgcolor="#3366FF" bordercolordark="#3366FF">
+            <p align="center"><font face="나눔고딕" color="white">설명</font></p>
+        </th>
+    </tr>
+    <tr>
+        <td width="134"><font face="나눔고딕">SP(Stack Pointer)</font></td>
+        <td width="634">
+            <p><font face="나눔고딕">스택에서 현재 들어오게 될&nbsp;데이터의 위치를 가리킵니다. 항상 마지막 데이터보다 한 칸 뒤(그림 상으로는 위)를 가리킵니다.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="134"><font face="나눔고딕">입력(Push)</font></td>
+        <td width="634">
+            <p><font face="나눔고딕">SP가 가리키는 곳에 데이터를 저장하는 것을 말합니다. 이 작업을 시행한 후 SP는 다시 한 칸 뒤(그림 상으로는 위)로 이동합니다.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="134"><font face="나눔고딕">추출(Pop)</font></td>
+        <td width="634">
+            <p><font face="나눔고딕">SP가 가리키는 곳의 한 칸 전, 즉 마지막 데이터를 추출하는 것을 말합니다. 이 작업을 시행한 후 SP는 다시 한 칸 앞(그림 상으로는 아래)으로 이동합니다.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="134"><font face="나눔고딕">스택 오버플로우(Stack Overflow)</font></td>
+        <td width="634">
+            <p><font face="나눔고딕">스택의 크기보다 더 많은 양의 데이터를 저장하려 시도할 때 나타나는 현상입니다. 컴파일 에러는 발생하지 않으나 프로그램 실행시 오류가 발생합니다.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="134"><font face="나눔고딕">마지막 데이터(top)</font></td>
+        <td width="634">
+            <p><font face="나눔고딕">추출한다면 나오게 될&nbsp;데이터를 말합니다.</font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="134"><font face="나눔고딕">처음 데이터(bottom)</font></td>
+        <td width="634">
+            <p><font face="나눔고딕">가장 마지막에 나오게 될 데이터를 말합니다. </font></p>
+        </td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+<p>이 프로그램에서는 사용자가 별도로 데이터를 저장할 수 없으며, 단순히 입력과 출력의 형태를 숫자를 통해 보입니다.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><font size="3" face="맑은 고딕"><b>3. 예제</b></font></p>
+<p>다음과 같은 형태로 스택이 구성되려면 입력(Push)과 추출(Pop)을 어떠한 과정을 거쳐 진행해야 하는지를 기술하시오.</p>
+<p>(단, 쓰여 있는 숫자는 서수이다.)</p>
+<table border="1" width="207" align="center">
+    <tr>
+        <td width="197">
+            <p align="center">&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">35</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">27</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">24</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">23</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">22</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">19</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">14</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">13</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">6</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">5</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="197">
+            <p align="center">1</p>
+        </td>
+    </tr>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center"><a href="ExplanationHtml.html" target="_self">홈으로</a></p>
+<p align="justify">&nbsp;</p>
+</body>
+
+</html>

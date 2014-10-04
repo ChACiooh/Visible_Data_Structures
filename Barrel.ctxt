@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=B\ pS
+comment0.target=Barrel(int,\ int)
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Doll\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=x
+comment2.target=void\ movePush(int)
+comment3.params=
+comment3.target=void\ updateImage()
+comment4.params=
+comment4.target=void\ movePop()
+comment5.params=
+comment5.target=void\ changedHead()
+numComments=6

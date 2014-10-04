@@ -1,0 +1,373 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.*;
+import javax.swing.*;
+
+public class GeneralNode extends List
+{
+    public boolean DRAW_LINE;
+    public boolean type;
+    private boolean imHead;//Head Node인지를 판별.
+    public boolean scaleReady; // 후단 노드 움직일 때 유용.
+    private int time, yMT;//yMT : y Moving Time. 뿐만아니라 후단 노드들의 움직임도 총괄하는 매개변수.
+    private int temp;
+    public boolean linked = false; // 연결 여부 확인.
+    boolean complete; // 이동 여부 확인
+    public int No;
+    int x, y, x0, y0, fX, fY;
+    Color t = new Color(0,0,0,0);
+    GreenfootImage img, txt, image;
+    //public static final int RANGE = 6;
+    
+    { DRAW_LINE = false; imHead = false; time = 0; }
+    
+    public GeneralNode(boolean isHead, int SP)
+    {
+        No = SP;
+        type = true;
+        pro = true;
+        complete = false;
+        temp = 0;
+        if(isHead)
+        {
+            imHead = true;
+        }
+        else    imHead = false;
+    }
+    
+    private void initialize()
+    {
+        //초기화.
+        time = 0;
+        yMT = 0;
+        No = 0;
+        temp = 0 ;
+        img = txt = image = null;
+        x=y=x0=y0=fX=fY=0;
+        imHead = false;
+        DRAW_LINE = false;
+        type = false;
+        getWorld().removeObject(this);
+    }
+    
+    public void act() 
+    {
+        if(pro)
+        {
+            pro = !pro;
+            scaleReady = false;
+            img = new GreenfootImage(getImage());
+            x0 = img.getWidth()/2;
+            y0 = img.getHeight()/2;
+            fX = fY = yMT = 0;
+            txt=image=null;
+        }
+        if(ListEnded)
+        {
+            initialize();
+        }
+        else
+        {
+            if(scaleReady)//사이즈 조절이 완료되었다면
+            {
+                if(fX == 0 && fY == 0)
+                {
+                    fX = getX();
+                    fY = getY();
+                }
+                if(!DRAW_LINE)
+                {
+                    if(temp == 0)
+                        temp = clickAndJudgeNode();
+                    if(time == 30)
+                    {
+                        time = 0;
+                    }
+                }
+                if(DRAW_LINE && temp==1) // 화살표를 만든 후 새로운 노드를 추가하는 과정.
+                {
+                    drawArrow(); // 화살표를 만드는 과정
+                    if(time == 30)
+                    {
+                        DRAW_LINE = false;//원래대로 돌림으로써 다시 선을 그리는 일을 피한다.
+                        if(/*!(getX()==500 && getY()==420)*/No<RANGE-1 )//마지막 좌표가 아닐 때 노드를 추가한다.
+                        {
+                            ((Board)getWorld()).list.addGeneralNode(getX()+x, getY()+y, No+1);
+                            linked = true; // 연결
+                            //연결되었다면, 이 노드는 더이상 Tail 노드가 아니다.
+                            if(!imHead)
+                            {
+                                image = new GreenfootImage(img);
+                                txt = new GreenfootImage("Data\npointer",18,Color.WHITE,t);
+                                image.drawImage(txt, (image.getWidth()-txt.getWidth())/2, (image.getHeight()-txt.getHeight())/2);
+                                setImage(image);
+                            }
+                            
+                            sp = No+1;
+                            temp = 0;
+                        }
+                        time = 0;
+                    }
+                }
+                else if(temp == 2 && yMT < 30) // 화살표를 제거한 후 자신의 노드를 제거하는 과정. 또한 이후의 노드들의 움직임을 총괄한다.
+                {
+                    yMT++;
+                    if(No<RANGE && ((Board)getWorld()).list.GN[No+1]==null)//현재 노드가 Tail이라면 이전 노드의 화살표를 없애버린다.
+                    {
+                        if(((Board)getWorld()).list.A[No]!=null)
+                        {
+                            //System.out.println("Called else if(temp ==2 ~ ) in act() method // No="+No+", a="+temp+" ");
+                            getWorld().removeObject(((Board)getWorld()).list.A[No]);
+                            ((Board)getWorld()).list.A[No]=null;
+                        }
+                    }
+                    setLocation(getX(), getY()+(yMT%2));//살짝 가라앉는 효과
+                    //선택한 노드의 다음노드들을 이동시키는 과정
+                    int i=1;
+                    //try{
+                    for(i=1; No+i<RANGE &&(((Board)getWorld()).list.GN[No+i]!=null || ((Board)getWorld()).list.A[No+1+i]!=null);i++)
+                    {
+                        if((No+i)%6!=0)//가장 좌측의 노드가 아닐때
+                        {
+                            if(!((Board)getWorld()).list.GN[No+i].linked)//Tail일 때
+                            {
+                                if(!((Board)getWorld()).list.GN[No+i].complete)
+                                {
+                                    ((Board)getWorld()).list.GN[No+i].setLocation(((Board)getWorld()).list.GN[No+i].getX()-5, 
+                                        ((Board)getWorld()).list.GN[No+i].getY());
+                                }
+                                else
+                                {
+                                    ((Board)getWorld()).list.GN[No+i].setLocation(((Board)getWorld()).list.GN[No+i].getX()-3, 
+                                        ((Board)getWorld()).list.GN[No+i].getY());
+                                }
+                            }
+                            else // Tail이 아닐 때
+                            {
+                                DC = true;
+                                try
+                                {
+                                    ((Board)getWorld()).list.GN[No+i].setLocation(((Board)getWorld()).list.GN[No+i].getX()-3, 
+                                        ((Board)getWorld()).list.GN[No+i].getY());
+                                    if( !(((Board)getWorld()).list.A[No+i+1] instanceof LastArrow1))
+                                    ((Board)getWorld()).list.A[No+i+1].setLocation(
+                                        ((Board)getWorld()).list.A[No+i+1].getX()-3/*(2+(i+1)*(yMT%2))*/,
+                                        ((Board)getWorld()).list.A[No+1+i].getY() );
+                                }catch(Exception e){};
+                            }
+                        }
+                        else //가장 좌측의 노드일 때
+                        {
+                            firstRoomMove(No+i);
+                        }
+                    }
+                    //}catch(Exception e){ /*System.out.println(""+i);*/}
+                    if(yMT == 30)
+                    {
+                        yMT = 0;
+                        for(int k=1; No+k<RANGE && ((Board)getWorld()).list.GN[No+k]!=null;k++)
+                            ((Board)getWorld()).list.GN[No+k].complete = true;//이동 완료.
+                        
+                        if(No%6==0 && ((Board)getWorld()).list.GN[No+1]==null)
+                        {
+                            //first Room이 선택되었을 경우 꺾이는 화살표 제거 단계. 단, 다음 노드가 없어야 한다.
+                            //getWorld().removeObject(((Board)getWorld()).list.A[No].LA2[No/6 - 1]);
+                            int l;
+                            for(l=5;l>=0;l--)
+                            {
+                                if( ((Board)getWorld()).list.A[No].LA2[l]!=null)
+                                {
+                                    getWorld().removeObject(((Board)getWorld()).list.A[No].LA2[l]);
+                                    //((Board)getWorld()).list.A[No].LA2[l].
+                                    break;
+                                }
+                            }
+                            if(l>=0)
+                                ((Board)getWorld()).list.A[No].LA2[l] = null;
+                            //complete.
+                        }
+                        //화살표의 정보를 넘겨주는 과정.
+                        ((Board)getWorld()).list.ArrowChange(No);
+                            
+                        if( No== RANGE-1 || ((Board)getWorld()).list.GN[No+1]==null) // 현재의 위치가 Tail이라면
+                        {
+                            ((Board)getWorld()).list.GN[No-1].linked = false; // 링크되지 않은 것으로 처리.
+                            if(No>1) // 전단 노드가 Head가 아닐 때
+                            {
+                                //글자를 'Tail'로 바꾸는 과정.
+                                ((Board)getWorld()).list.GN[No-1].image = new GreenfootImage(img);
+                                ((Board)getWorld()).list.GN[No-1].image.drawImage(txt, (image.getWidth()-txt.getWidth())/2, 
+                                                (image.getHeight()-txt.getHeight())/2);
+                                ((Board)getWorld()).list.GN[No-1].setImage(((Board)getWorld()).list.GN[No-1].image);
+                            }
+                        }
+                        sp--;
+                        //정보를 넘겨주었으므로 최종 화살표는 sp-1이기 때문에 sp--를 해 주었다. 또한 노드 하나가 줄어들었기 때문이기도 하다.
+                        if(sp>0 && ((Board)getWorld()).list.A[sp]!=null)
+                            if(((Board)getWorld()).list.A[sp].getX()>((Board)getWorld()).list.A[sp].origin_X)
+                                if( ( ((Board)getWorld()).list.A[sp] instanceof LastArrow1) || ((Board)getWorld()).list.A[sp+1]!=null)
+                                {
+                                    /*((Board)getWorld()).list.A[sp].setLocation(((Board)getWorld()).list.A[sp].getX()-15, 
+                                        ((Board)getWorld()).list.A[sp].getY());*/
+                                    getWorld().removeObject(((Board)getWorld()).list.A[sp]);
+                                    ((Board)getWorld()).list.A[sp]=null;
+                                    ((Board)getWorld()).list.A[sp]= new Arrow();
+                                    getWorld().addObject(((Board)getWorld()).list.A[sp], ((Board)getWorld()).list.GN[sp-1].getX()+81, getY()-15);
+                                    ((Board)getWorld()).list.A[sp].decreaseChange();//여기 GN[sp-1]을 수정!!
+                                }
+                        temp = 0;
+                        ((Board)getWorld()).list.NoChange(No);
+                        
+                        initialize();
+                    }
+                }
+                else
+                {
+                    DRAW_LINE = false;
+                }
+            }
+            else if(!scaleReady)//사이즈 조절중...
+            {
+                //GreenfootImage GFI = new GreenfootImage(getImage());
+                if(img.getWidth()>x0)
+                {
+                    img.scale(img.getWidth()-3, img.getHeight());
+                }
+                if(img.getHeight()>y0)
+                {
+                    img.scale(img.getWidth(), img.getHeight()-3);
+                }
+                setImage(img);
+                
+                //사이즈 조절 끝
+                if(img.getWidth()>=x0-2 && img.getWidth()<=x0+2 && img.getHeight()>=y0-2 && img.getHeight()<=y0+2)
+                {
+                    image = new GreenfootImage(img);
+                    
+                    if(imHead)  txt = new GreenfootImage("Head\npointer", 18, Color.WHITE, t);
+                    else    txt = new GreenfootImage("Tail\npointer", 18, Color.WHITE, t);
+                    
+                    image.drawImage(txt, (image.getWidth()-txt.getWidth())/2, (image.getHeight()-txt.getHeight())/2);
+                    setImage(image);
+                    scaleReady = true;
+                }
+                //GFI = null;
+            }
+            
+        }
+    }    
+    
+    private void drawArrow()
+    {
+        /**
+         * DRAW_LINE이 true가 되면 이 메서드를 호출한다.
+         * 이때 일정한 방향, 모양, 크기로 화살표를 생성한다.
+         */
+        if(time == 0 )//맨 처음
+        {
+            DC = true;
+            if(No!=0 && No%6 == 0)
+            {
+                LastArrow2.D = true;
+                /**
+                 * static 변수이므로 애매한 LastArrow2 객체의 D 변수를 통틀어 조절할 수 있다.
+                 */
+                //((Board)getWorld()).list.A[No].D = true;
+            }
+        }
+        if(time<30)
+        {
+            if(!complete)
+                setLocation(getX()-2, getY());
+            else if(No == RANGE-1)  time=29;
+                
+            time++;
+        }
+        if(time == 30)
+        {
+            if(No<RANGE-1)//마지막 노드가 아닐 때
+            {
+                ((Board)getWorld()).list.addArrow(No+1, getX()+80, getY());
+            }
+            x = 150;//새로운 노드를 추가할 좌표 x
+            y = 0;//새로운 노드를 추가할 좌표 y
+            if(/*getX()>=getWorld().getWidth()-130 && getX()<=getWorld().getWidth()-50*/ No==RANGE-1)//마지막 칸일 때
+            {
+                x = -390;
+                y = 60;
+                getWorld().addObject(new OverFlow(), getWorld().getWidth()-100, getWorld().getHeight()-50);
+                /*if(temp!=0) temp=0;
+                return;*/
+            }
+            complete = true;
+            if(temp!=0) temp = 0;
+        }
+    }
+    
+    private int clickAndJudgeNode() // 노드 추가와 제거를 주관한다.
+    {
+        int result = 0, a;
+        if(Greenfoot.mouseClicked(this) && (Greenfoot.getMouseInfo().getX()<=getX()+30 || Greenfoot.getMouseInfo().getX()>=getX()-30))
+        {
+            a = checkMessage();
+            if(a == 1)
+            {
+                if(type)//General Node 생성
+                {
+                    if(!linked) // 연결되어 있지 않다면
+                    {
+                        DRAW_LINE = true;
+                        result = 1;
+                    }
+                    else
+                    {
+                        DRAW_LINE = false;
+                        result = 0;
+                        JOptionPane.showMessageDialog(null, "이미 연결되어 있습니다.");
+                    }
+                }
+            }
+            else if( a == 0 ) // 제거
+            {
+                result = 2;
+                if(No+1<RANGE && ((Board)getWorld()).list.A[No+1]!=null)
+                {
+                    //System.out.println("Called clickAndJudgeNode() method // No="+No+", a="+a+" ");
+                    //우측 화살표 제거
+                    if( sp>5 && ((Board)getWorld()).list.A[No+1].LA2[sp/6-1]!=null)
+                    {
+                        getWorld().removeObject(((Board)getWorld()).list.A[No+1].LA2[sp/6-1]);
+                            ((Board)getWorld()).list.A[No+1].LA2[sp/6-1]=null;
+                    }
+                    getWorld().removeObject(((Board)getWorld()).list.A[No+1]);
+                    ((Board)getWorld()).list.A[No+1] = null;
+                }
+            }
+        }
+        return result;
+    }
+    
+    private int checkMessage()
+    {
+        int res = 2;
+        if(imHead)  res = 1;
+        else    res = JOptionPane.showConfirmDialog(null, "삭제=예  추가=아니오");
+        // 0 : 삭제, 1 : 추가, 2 : 아무것도 안 함
+        return res;
+    }
+    
+    private void firstRoomMove(int num)
+    {
+        /**
+         * Node들이 층을 이루고 있으므로 가장 좌측에 있는 것을 'first Room'이라고 칭하였다.
+         */
+        if( ((Board)getWorld()).list.GN[num+1] == null/* && ((Board)getWorld()).list.GN[num].complete == false*/) 
+        {
+            // 이 Node가 최근 생성된 Tail일 경우
+            ((Board)getWorld()).list.GN[num].setLocation( ((Board)getWorld()).list.GN[num].getX()+13, ((Board)getWorld()).list.GN[num].getY()-2);
+        }
+        else //최근 생성된 Tail이이 아닐 경우
+        {
+            ((Board)getWorld()).list.GN[num].setLocation( ((Board)getWorld()).list.GN[num].getX()+15, ((Board)getWorld()).list.GN[num].getY()-2);
+        }
+    }
+}

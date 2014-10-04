@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=No
+comment0.target=BfE(int)
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ printExp()
+comment3.params=no
+comment3.target=void\ changeNum(int)
+numComments=4

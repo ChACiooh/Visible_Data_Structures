@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SP()
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ SP\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ printSP()
+comment3.params=
+comment3.target=void\ shift1()
+comment4.params=
+comment4.target=void\ shift2()
+numComments=5

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=FinalPrint()
+comment1.params=isSuccessed\ dataType
+comment1.target=FinalPrint(boolean,\ java.lang.String)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ printSuccess()
+comment4.params=
+comment4.target=void\ printFail()
+numComments=5

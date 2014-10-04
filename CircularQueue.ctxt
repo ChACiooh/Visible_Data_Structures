@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=
+comment0.target=CircularQueue()
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ CircularQueue\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=a
+comment2.target=void\ END(boolean)
+comment3.params=
+comment3.target=void\ initializeParameters()
+comment4.params=
+comment4.target=void\ rotate()
+numComments=5

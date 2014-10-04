@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SearchBinaryTreetest()
+comment1.params=
+comment1.target=void\ delay()
+comment10.params=
+comment10.target=void\ findProblemCord()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ addNode()
+comment4.params=
+comment4.target=void\ moveToRoot()
+comment5.params=
+comment5.target=void\ checkClick()
+comment6.params=num
+comment6.target=void\ initDirect(int)
+comment7.params=
+comment7.target=void\ drawUnderLine()
+comment8.params=
+comment8.target=void\ drawLine()
+comment9.params=
+comment9.target=void\ printData()
+numComments=11

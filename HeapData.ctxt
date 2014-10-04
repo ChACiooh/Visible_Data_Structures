@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=num
+comment0.target=HeapData(int)
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ printNum()
+comment3.params=
+comment3.target=void\ selected()
+comment4.params=
+comment4.target=void\ changed()
+comment5.params=
+comment5.target=void\ beNormal()
+numComments=6
