@@ -1,14 +1,18 @@
 #BlueJ class context
 comment0.params=
 comment0.target=SearchBinaryTree()
-comment1.params=
-comment1.target=void\ act()
+comment1.params=range_Num\ preLine
+comment1.target=SearchBinaryTree(int,\ Vector)
 comment2.params=
-comment2.target=void\ checkKeys()
+comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ delay()
+comment3.target=void\ checkKeys()
 comment4.params=
-comment4.target=void\ printData()
-comment5.params=num
-comment5.target=void\ inputData(int)
-numComments=6
+comment4.target=void\ delay()
+comment5.params=
+comment5.target=void\ printData()
+comment6.params=num
+comment6.target=void\ inputData(int)
+comment7.params=drec
+comment7.target=void\ scope(Vector)
+numComments=8

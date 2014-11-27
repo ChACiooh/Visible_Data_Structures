@@ -733,7 +733,7 @@ public class Heap extends Actor implements Delay
                 {
                     JOptionPane.showMessageDialog(null, "MIN힙 정렬 완료!");
                     HeapSortComplete = false;
-                    HeapSortCompleted = false;
+                    HeapSortCompleted = true;
                     ddd = -1;
                     p = 0;
                 }
@@ -815,7 +815,7 @@ public class Heap extends Actor implements Delay
                 {
                     JOptionPane.showMessageDialog(null, "MAX힙 정렬 완료!");
                     HeapSortComplete = false;
-                    HeapSortCompleted = false;
+                    HeapSortCompleted = true;
                     ddd = -1;
                 }
             }

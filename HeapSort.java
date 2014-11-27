@@ -39,7 +39,7 @@ public class HeapSort extends Heap
     
     private void checkClicked()
     {
-        if(Greenfoot.mouseClicked(this)  && sortComplete && !HeapSorting && !HeapSortCan && !HeapSortComplete && !HeapSortCompleted)
+        if(Greenfoot.mouseClicked(this)  && !HeapSortCompleted && sortComplete && !HeapSorting && !HeapSortCan && !HeapSortComplete && !HeapSortCompleted)
         {
             try
             {
